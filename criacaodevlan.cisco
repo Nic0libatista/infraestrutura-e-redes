@@ -1,0 +1,28 @@
+enable
+show vlan brief
+configure terminal
+vlan (usar a partir de 2)
+name (digitar o nome)
+exit
+
+vlan 10
+name switch
+
+vlan 20 
+name server
+
+vlan 30
+name wireless
+
+vlan 40
+name estoque
+
+vlan 50
+name financeiro
+
+vlan 60 
+name gerencia
+  
+exit
+end
+write
