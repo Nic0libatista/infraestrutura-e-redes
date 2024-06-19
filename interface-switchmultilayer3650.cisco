@@ -1,0 +1,14 @@
+switch multilayer 3650
+enable 
+ configure terminal
+ interface range gigabitethernet 1/0/1 - 4
+  description interface de trunk
+ // switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchpoart nonegotiate
+ end
+ write
+  
+  
+ show running-config
+ show interface trunk

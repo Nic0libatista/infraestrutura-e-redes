@@ -1,0 +1,54 @@
+switch 2960 (acesso lado esquerdo)
+enable 
+ configure terminal
+ interface range gigabitethernet 0/1 - 2
+  switchport mode trunk
+  switchport nonegotiate
+  exit
+
+  interface range fastethernet 0/23 - 24
+  switchport mode trunk
+  switchport nonegotiate
+  end
+write
+ 
+!switch 2960 (acesso lado esquerdo)
+ enable
+  configure terminal
+  interface fastethernet 0/1
+   description vlan 40 estoque
+   switchport mode access 
+   switchport access vlan 40
+   switchport nonegotiate
+exit
+
+!switch 2960 (acesso lado esquerdo)
+
+ enable
+  configure terminal
+  interface fastethernet 0/2
+   description vlan 50 financeiro
+   switchport mode access 
+   switchport access vlan 50
+   switchport nonegotiate
+exit
+
+!switch 2960 (acesso lado esquerdo)
+ enable
+  configure terminal
+  interface fastethernet 0/3
+   description vlan 60 gerencia
+   switchport mode access 
+   switchport access vlan 60
+   switchport nonegotiate
+exit
+
+interface range fastethernet 0/4 - 22
+description no-arthur
+shutdown
+end
+write
+
+
+do sh runn
+show ip interface brief
