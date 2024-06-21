@@ -1,0 +1,14 @@
+enable
+ configure terminal
+ interface range gigabitethernet 1/0/10 - 12
+ description interfaces de servidores
+  swithport mode access 
+  switchport nonegotiate 
+  swithport access vlan 20
+  exit
+  interface gigabitethernet 1/0/23
+  description interfaces de rede wireless
+  switchport nonegotiate
+  switchport access vlan 30
+  end 
+  write
