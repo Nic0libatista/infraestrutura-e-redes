@@ -1,0 +1,23 @@
+!configuração router SPO 
+ enable
+  conf terminal
+   ip route 0.0.0.0 0.0.0.0 10.0.0.2
+ end
+write
+
+!configuração router RJO 
+ enable
+  conf terminal
+   ip route 192.168.1.0 255.255.255.0 10.0.0.1
+ end
+write
+
+!configuração switch 3650
+ en 
+   conf terminal
+   ip route 0.0.0.0 0.0.0.0. 192.168.2.254
+end
+wr
+
+sh ip route
+tracert 192.168.1.1

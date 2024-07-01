@@ -1,0 +1,10 @@
+!configuraçao do router 1941 SPO
+enable
+configure terminal
+    interface gigabitethernet 0/0/0
+    description interface wan spo para rjo 
+    ip address 10.0.0.1 255.255.255.252
+    no shutdown
+end 
+write 
+

@@ -1,0 +1,12 @@
+!configuração do switch multilayer 3650
+  enable
+    configure terminal
+        interface gigabitethernet1/0/24
+        description interface de conexao com o router 1941
+        no switchport 
+        ip address 192.168.2.1 255.255.255.0
+        no shutdown 
+ end
+write
+
+show runn 
