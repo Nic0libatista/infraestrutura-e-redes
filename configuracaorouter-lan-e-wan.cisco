@@ -1,0 +1,40 @@
+en 
+    conf t 
+    hostname SP 
+    int f0/0 
+    ip add 192.168.10.1 255.255.255.0
+    no shut
+    description porta LAN de SP
+    exit
+    in s0/0
+    no shut 
+    ip add 20.0.0.1 255.0.0.0
+    description porta WAN que liga SP ao RJ 
+    clock rate 128000
+    bandwidth 128
+    exit 
+    router rip
+    network 20.0.0.0
+    network 192.168.10.0 
+end
+ en 
+    conf t 
+    hostname SP 
+    int f0/0 
+    ip add 192.168.20.1 255.255.255.0
+    no shut
+    description porta LAN do RJ
+    exit
+    in s0/1
+    no shut 
+    ip add 20.0.0.1 255.0.0.0
+    description porta WAN que liga SP ao RJ 
+    #clock rate 128000  (apenas para route de começo (DCE))
+    bandwidth 128
+    exit 
+    router rip
+    network 20.0.0.0
+    network 192.168.10.0 
+end
+wr
+ copy runn start 
