@@ -1,0 +1,69 @@
+!configurandoswitch-resete
+
+pressionar e segurar o Botão: Mode por aproximadamente: 15/20 segundos até os LED's piscarem em: Ambar (Laranja) e o Switch entrar no modo de ROMmon e ser reinicializado, no Terminal será mostrado a mensagem que o equipamento será reiniciado.
+Would you like to enter the initial configuration dialog? [yes/no]: no
+
+Press RETURN to get started!
+
+Switch>
+!Acessar o modo privilegiado de comandos 
+            Switch> enable
+
+            dir flash: (confere os arquivos salvos)
+
+	!Remover o banco de dados de VLAN da Flash: 
+	        Switch# delete flash:vlan.dat
+
+	!Remover os backups anteriores das turmas: 
+	        Switch# delete flash:startup-config
+
+	!Reiniciar o Switch para testar as configurações
+	        Switch# reload 
+
+
+    !router ligado pelo crossover no console e cabo de monitor na porta r.cisco
+
+    desligar e ligar e quando aparecer # no putty clicar com o botao direito > break
+
+            confreg 0x2142   (chave de registro/ para nao ler startup-config)
+            reset            (para reiniciar o router)
+            no 
+            #enter
+            
+  !Limpando as configurações do Router 
+        Router>
+	
+	!Acessar o modo privilegiado de comandos 
+	Router> enable
+
+	!Limpando as configuração da NVRAM
+	Router# erase startup-config
+   
+    !ver arquivos salvos
+    dir flash: 
+
+	!Remover os backups anteriores: 
+	Router# delete flash:startup-config
+
+	!Entrar no modo de configuração global
+	Router# configure terminal
+
+		!Alterar o registro de inicialização do Router
+		Router (config)# config-register 0x2102 
+
+		!Saindo de dos os modos de configuração
+		Router (config)# end
+
+	!Salvando as configurações da RAM para a NVRAM
+	Router# copy running-config startup-config  (nao pode usar o comando write)
+
+	!Reiniciar o Router para testar as configurações
+	Router# reload
+
+	!Após a reiniciar o Router Cisco 2911 verifique a chave de registro
+	!Valor está na última linha referente ao cofreg 0x2102
+	Router> enable
+	Router# show version
+		Configuration register is 0x2102         
+         
+
